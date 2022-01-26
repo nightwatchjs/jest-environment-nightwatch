@@ -29,5 +29,10 @@
     "eslint": "^8.7.0",
     "mocha": "^9.2.0",
     "nightwatch": "^2.0.0-dev.18"
-  }
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ]
 }
