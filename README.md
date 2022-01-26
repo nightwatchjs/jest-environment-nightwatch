@@ -10,9 +10,9 @@ npm install jest-environment-nightwatch
 ```
 
 ## Usage:
-Update your Jest configuration:
+Update your [Jest configuration](https://jestjs.io/docs/configuration):
 
-```json
+```js
 {
   testEnvironment: 'jest-environment-nightwatch',
   testEnvironmentOptions: {
