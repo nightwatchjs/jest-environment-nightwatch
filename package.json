@@ -1,0 +1,33 @@
+{
+  "name": "jest-environment-nightwatch",
+  "version": "0.0.0",
+  "description": "Nightwatch.js environment for Jest",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint .",
+    "test": "mocha"
+  },
+  "keywords": [
+    "nightwatch.js",
+    "jest",
+    "jest-environment"
+  ],
+  "author": "Andrei Rusu",
+  "license": "MIT",
+  "dependencies": {
+    "jest-environment-node": "^27.4.6"
+  },
+  "peerDependencies": {
+    "nightwatch": "^2.0.0-beta.3"
+  },
+  "peerDependenciesMeta": {
+    "nightwatch": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "mocha": "^9.2.0",
+    "nightwatch": "^2.0.0-dev.18"
+  }
+}
