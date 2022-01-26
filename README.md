@@ -3,6 +3,7 @@
 
 [![Build Status][build-badge]][build]
 [![version][version-badge]][package]
+[![Discord][discord-badge]][discord]
 [![MIT License][license-badge]][license]
 
 ```
@@ -87,3 +88,5 @@ MIT
 [package]: https://www.npmjs.com/package/jest-environment-nightwatch
 [license-badge]: https://img.shields.io/npm/l/jest-environment-nightwatch.svg?style=flat-square
 [license]: https://github.com/nightwatchjs/jest-environment-nightwatch/blob/main/LICENSE
+[discord-badge]: https://img.shields.io/discord/618399631038218240.svg?color=7389D8&labelColor=6A7EC2&logo=discord&logoColor=ffffff&style=flat-square
+[discord]: https://discord.gg/SN8Da2X
