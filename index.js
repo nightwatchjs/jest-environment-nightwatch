@@ -56,16 +56,17 @@ class NightwatchEnvironment extends NodeEnvironment {
 
     this.opts = config.testEnvironmentOptions || {};
     this.client = createNightwatchClient(this.opts);
-    this.global.nightwatch_client = this.client.nightwatch_client;
+
+    this.global.jestNightwatch = this.client;
   }
 
   async setup() {
     await super.setup();
 
-    this.opts.auto_start_session = this.opts.auto_start_session || typeof this.opts.auto_start_session == 'undefined';
+    this.opts.autoStartSession = this.opts.autoStartSession || typeof this.opts.autoStartSession == 'undefined';
 
-    // auto_start_session is true by default
-    if (this.opts.auto_start_session) {
+    // autoStartSession is true by default
+    if (this.opts.autoStartSession) {
       this.global.browser = await this.client.launchBrowser();
     }
   }

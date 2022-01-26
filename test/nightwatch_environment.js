@@ -9,7 +9,8 @@ describe('NightwatchEnvironment Unit Tests', function() {
     const instance = new NightwatchEnvironment({});
 
     assert.ok(instance instanceof NodeEnvironment);
-    assert.ok(instance.global.nightwatch_client instanceof NightwatchClient);
+    assert.ok(instance.global.jestNightwatch);
+    assert.ok(instance.global.jestNightwatch.nightwatch_client instanceof NightwatchClient);
   });
 
   it('verify defaults', function(done) {
@@ -88,7 +89,7 @@ describe('NightwatchEnvironment Unit Tests', function() {
       }
     });
 
-    const {settings, queue, transport, api} = instance.global.nightwatch_client;
+    const {settings, queue, transport, api} = instance.global.jestNightwatch.nightwatch_client;
     assert.strictEqual(settings.capabilities.browserName, 'chrome');
     assert.strictEqual(settings.desiredCapabilities.browserName, 'chrome');
     assert.strictEqual(settings.desiredCapabilities['goog:chromeOptions'].args[0], 'no-sandbox');
@@ -116,11 +117,13 @@ describe('NightwatchEnvironment Unit Tests', function() {
   it('test with setup and auto_start off', async function() {
     const instance = new NightwatchEnvironment({
       testEnvironmentOptions: {
-        auto_start_session: false
+        autoStartSession: false
       }
     });
 
     await instance.setup();
     assert.strictEqual(instance.global.browser, undefined);
+    assert.ok(instance.global.jestNightwatch);
+    assert.strictEqual(typeof instance.global.jestNightwatch.launchBrowser, 'function');
   });
 });

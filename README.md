@@ -24,7 +24,8 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
     env: null, 
     parallel: false,
     devtools: false,
-    debug: false, 
+    debug: false,
+    autoStartSession: true,
     persistGlobals: true,
     configFile: './nightwatch.conf.js',
     globals: {}, 
@@ -86,6 +87,13 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
 |:--- | :--- | :---: |
 | Boolean  | Component testing only: pause the test execution after rendering the component | `false` |
 
+### .autoStartSession
+
+| Type | Description | Default |
+|:--- | :--- | :---: |
+| Boolean  | Start the Nightwatch session automatically. If this is disabled, you'll need to call `jestNightwatch.launchBrowser()` in your tests. | `true` |
+
+
 ### .persistGlobals
 
 | Type | Description | Default |
@@ -134,11 +142,20 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
 
 ### `global.browser`
 
-The Nightwatch [browser API](https://v2.nightwatchjs.org/api/#the-browser-object) object.
+The Nightwatch [browser API](https://v2.nightwatchjs.org/api/#the-browser-object) object. Unavailable when `autoStartSession` is off.
 
-### `global.nightwatch_client`
 
-The entire Nightwatch instance.
+### `global.jestNightwatch`
+
+The Jest environment used the Nightwatch [programmatic API](https://v2.nightwatchjs.org/api/programmatic/) to create the Nightwatch instance and export the browser API. 
+
+Available properties/methods:
+- `.element(<locator>)` - use the Nightwatch [.element() API](https://v2.nightwatchjs.org/api/element/) to locate elements in the page;
+- `.updateCapabilities({ capabilities })` - used when `autoStartSession` is off in order to update the capabilities at run-time;
+- `.launchBrowser()` - used when `autoStartSession` is off in order to start the session and open the browser;
+- `.settings` - the Nightwatch settings object;
+- `.nightwatch_client` - the Nightwatch (internal) instance.
+
 
 ## License
 MIT
