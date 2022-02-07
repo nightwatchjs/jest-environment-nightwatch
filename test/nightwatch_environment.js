@@ -126,4 +126,59 @@ describe('NightwatchEnvironment Unit Tests', function() {
     assert.ok(instance.global.jestNightwatch);
     assert.strictEqual(typeof instance.global.jestNightwatch.launchBrowser, 'function');
   });
+
+  it('test with baseUrl property', async function() {
+    const instance = new NightwatchEnvironment({
+      testEnvironmentOptions: {
+        baseUrl: 'http://localhost'
+      }
+    });
+
+    instance.client.launchBrowser = function() {
+      return Promise.resolve({value: true});
+    };
+
+    await instance.setup();
+    assert.strictEqual(instance.global.baseUrl, 'http://localhost');
+  });
+
+  it('test with setup option', function(done) {
+    const instance = new NightwatchEnvironment({
+      testEnvironmentOptions: {
+        async setup(browser) {
+          assert.deepStrictEqual(browser, {value: true});
+
+          done();
+        }
+      }
+    });
+
+    instance.client.launchBrowser = function() {
+      return Promise.resolve({value: true});
+    };
+
+    instance.setup().then(function() {
+
+    }).catch(err => done(err));
+  });
+
+  it('test with teardown option', function(done) {
+    const instance = new NightwatchEnvironment({
+      testEnvironmentOptions: {
+        async teardown(browser) {
+          assert.deepStrictEqual(browser, {value: true});
+
+          done();
+        }
+      }
+    });
+
+    instance.client.launchBrowser = function() {
+      return Promise.resolve({value: true});
+    };
+
+    instance.setup().then(function() {
+      return instance.teardown();
+    }).catch(err => done(err));
+  });
 });

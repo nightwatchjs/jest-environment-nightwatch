@@ -61,13 +61,27 @@ class NightwatchEnvironment extends NodeEnvironment {
   }
 
   async setup() {
-    await super.setup();
-
     this.opts.autoStartSession = this.opts.autoStartSession || typeof this.opts.autoStartSession == 'undefined';
 
     // autoStartSession is true by default
     if (this.opts.autoStartSession) {
       this.global.browser = await this.client.launchBrowser();
+    }
+
+    if (this.opts.baseUrl) {
+      this.global.browser.baseUrl = this.opts.baseUrl;
+    }
+
+    if (typeof this.opts.setup == 'function') {
+      await this.opts.setup.call(this.global, this.global.browser);
+    }
+  }
+
+  async teardown() {
+    await super.teardown();
+
+    if (typeof this.opts.teardown == 'function') {
+      await this.opts.teardown.call(this.global, this.global.browser);
     }
   }
 }

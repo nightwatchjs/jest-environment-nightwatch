@@ -20,6 +20,7 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
     // Nightwatch related options
     headless: true,
     browserName: 'chrome',
+    baseUrl: '',
     verbose: false,  
     output: true,
     env: null, 
@@ -34,7 +35,9 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
     timeout: null,
     enableGlobalApis: false,
     alwaysAsync: true,
-    desiredCapabilities: {}
+    desiredCapabilities: {},
+    async setup(browser) {},
+    async teardown(browser) {},
   }
 }
 ```
@@ -45,6 +48,7 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
 |:--- | :--- | :--- | :---: |
 | **`headless`**| Boolean  | Run Nightwatch in headless mode (available in Firefox, Chrome, Edge) | `true` | 
 | **`browserName`** | String  | Browser name to use; available options are: `chrome`, `firefox`, `edge`, `safari` | none | 
+| **`baseUrl`** | String  | The base url to use for the when using `.navigateTo()` with relative urls. When doing component testing it needs to be set to the url running the Vite dev server. | `http://localhost:3000` | 
 | **`verbose`** | Boolean  | Enable complete Nightwatch http logs. | `false` |
 | **`output`** | Boolean  | Show Nightwatch output. | `true` |
 | **`env`** | String  | Nightwatch test environment to use, from `nightwatch.conf.js`. Learn more about test environments in the [Nightwatch docs](https://v2.nightwatchjs.org/guide/using-nightwatch/concepts.html#defining-test-environments). | none |
@@ -59,6 +63,8 @@ Update your [Jest configuration](https://jestjs.io/docs/configuration):
 | **`timeout`** | Number  | Set the global timeout for assertion retries before an assertion fails.  | `5000` |
 | **`enableGlobalApis`** | Boolean  | The Nightwatch global APIs ([element()](https://v2.nightwatchjs.org/api/element/), [expect()](https://v2.nightwatchjs.org/api/expect/)) are disable by default. | `false` |
 | **`desiredCapabilities`** | Object  | Define custom Selenium capabilities for the current session. Learn more about the specific browser driver that it is being used on the [Nightwatch docs](https://v2.nightwatchjs.org/guide/browser-drivers-setup/). | none |
+| **`setup()`** | Function  | Additional setup hook to be executed after Nightwatch has been started. | none |
+| **`teardown()`** | Function  | Additional teardown hook to be executed with the Nightwatch api object. | none |
 
 ## API
 
