@@ -1,11 +1,11 @@
 # jest-environment-nightwatch
-**[Nightwatch 2](https://v2.nightwatchjs.org)** environment for Jest. Nightwatch.js is an integrated test framework for performing automated end-to-end testing on web applications and websites, across all major browsers.
 
 <p>
   <img alt="Nightwatch.js Schematic Logo" src=".github/assets/nightwatch-logo.svg" width=200 />
   <img alt="Cucumber.js Schematic Logo" src=".github/assets/jest-logo.png" width=200 />
 </p>
 
+**[Nightwatch](https://nightwatchjs.org)** environment for Jest. Nightwatch.js is an integrated test framework for performing automated end-to-end testing on web applications and websites, across all major browsers.
 
 [![Build Status][build-badge]][build]
 [![version][version-badge]][package]
