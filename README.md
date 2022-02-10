@@ -1,6 +1,6 @@
 # jest-environment-nightwatch
 
-<p>
+<p align=center>
   <img alt="Nightwatch.js Schematic Logo" src=".github/assets/nightwatch-logo.svg" width=200 />
   <img alt="Cucumber.js Schematic Logo" src=".github/assets/jest-logo.png" width=200 />
 </p>
